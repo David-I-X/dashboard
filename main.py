@@ -193,7 +193,7 @@ def main():
         tipo_costo = st.radio('Selecciona el tipo de costo a visualizar', ('Combustible', 'Electricidad'))
 
         # Filtrar los datos según los filtros aplicados
-        df_filtrado = vehicles.copy()
+        df_filtrado = vehicles
         if fabricante_selec:
             df_filtrado = df_filtrado[df_filtrado['manuf'] == fabricante_selec]
         if tipo_costo == 'Combustible':
@@ -317,7 +317,7 @@ def main():
         st.title("Costo Promedio por Tipo de Vehículo")
 
         # Filtros en la página, justo arriba de la gráfica
-        fuel_type_filter = st.multiselect("Seleccione el tipo de combustible:", vehicles['fuel_type'].unique(), default=vehicles['fuel_type'].unique())
+        fuel_type_filter = st.multiselect("Seleccione el tipo de combustible:", vehicles['fuel_type'].unique(), default=vehicles['fuel_type'].unique(),  label_visibility='hidden')
 
         # Filtrar los datos según los filtros seleccionados
         filtered_data = vehicles[(vehicles['fuel_type'].isin(fuel_type_filter))]
