@@ -8,7 +8,7 @@ import pandas as pd
 def get_data(dataset: str):
     if dataset == 'trips':
         # Cargar los datos de trips
-        trips = pd.read_parquet('C:/Users/david/Documents/ETL-P/etl_minio/trips.parquet')
+        trips = pd.read_parquet('etl_minio/trips.parquet')
         # Asegurarse de que la columna de fecha está en formato datetime
         trips['pickup_datetime'] = pd.to_datetime(trips['pickup_datetime'])
         # Crear la columna 'day_of_week' basada en la fecha del viaje
@@ -17,13 +17,13 @@ def get_data(dataset: str):
 
     elif dataset == 'vehicles':
         # Cargar los datos de vehicles
-        vehicles = pd.read_parquet('C:/Users/david/Documents/ETL-P/etl_minio/vehicles.parquet')
+        vehicles = pd.read_parquet('etl_minio/vehicles.parquet')
         return vehicles
     elif dataset == 'air':
-        air= pd.read_parquet('C:/Users/david/Documents/ETL-P/etl_minio/air_quality_measurement.parquet')
+        air= pd.read_parquet('etl_minio/air_quality_measurement.parquet')
         return air
     elif dataset == 'fuel' :
-        fuel =pd.read_parquet('C:/Users/david/Documents/ETL-P/etl_minio/fuel_economy_data.parquet')
+        fuel =pd.read_parquet('etl_minio/fuel_economy_data.parquet')
         return fuel
     else:
         raise ValueError("El parámetro dataset debe ser 'trips' o 'vehicles'")
